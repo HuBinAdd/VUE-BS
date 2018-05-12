@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <% htmlWebpackPlugin.options.meta.map(([key, value]) => {
+  %>
+  <meta name="<%= key %>" content="<%= value %>">
+  <% });
+  %>
+  <link rel="stylesheet" href="./common.css">
+  <%
+  htmlWebpackPlugin.options.css.map(url => {
+  %>
+  <link rel="stylesheet" href="<%= url %>">
+  <%
+  });
+  %>
+  <script src="./common.js"></script>
+  <%
+  htmlWebpackPlugin.options.js.map(url => {
+  %>
+  <script src="<%= url %>"></script>
+  <%
+  });
+  %>
+</head>
+<body class="<%= htmlWebpackPlugin.options.class %>">
+</body>
+</html>
