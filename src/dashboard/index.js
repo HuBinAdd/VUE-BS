@@ -3,7 +3,7 @@ import App from './app';
 import ElementUI from 'element-ui';
 import axios from 'axios';
 import 'element-ui/lib/theme-chalk/index.css';
-import "babel-polyfill";
+import 'babel-polyfill';
 
 Vue.use(ElementUI, { size: 'small' });
 Vue.prototype.$axios = axios;

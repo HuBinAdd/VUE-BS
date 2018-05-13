@@ -1,74 +1,72 @@
 <template>
-<div>
-<canvas :id="canvasId" :width="width" :height="height"></canvas>
+  <div>
+    <canvas :id="canvasId" :width="width" :height="height"></canvas>
   </div>
-  </template>
+</template>
 
-  <script>
-import sChart from 'schart.js';
-export default {
-  data: function() {
-    return {}
-  },
-  props: {
-    canvasId: {
-      type: String,
-      default: ''
+<script>
+  import sChart from 'schart.js';
+
+  export default {
+    data() {
+      return {};
     },
-    width: {
-      type: [String, Number],
-      default: 500
+    props: {
+      canvasId: {
+        type: String,
+        default: '',
+      },
+      width: {
+        type: [String, Number],
+        default: 500,
+      },
+      height: {
+        type: [String, Number],
+        default: 400,
+      },
+      type: {
+        type: String,
+        default: 'bar',
+      },
+      data: {
+        type: Array,
+        default: [],
+      },
+      options: {
+        type: Object,
+        required: false,
+      },
     },
-    height: {
-      type: [String, Number],
-      default: 400
+    mounted() {
+      this.$nextTick(() => {
+        this.renderChart();
+      });
     },
-    type: {
-      type: String,
-      default: 'bar',
+    methods: {
+      renderChart() {
+        new sChart(this.canvasId, this.type, this.data, this.options);
+      },
     },
-    data: {
-      type: Array,
-      default: [],
+    watch: {
+      data() {
+        this.renderChart();
+      },
+      options() {
+        this.renderChart();
+      },
+      type() {
+        this.renderChart();
+      },
+      width() {
+        this.$nextTick(() => {
+          this.renderChart();
+        });
+      },
+      height() {
+        this.$nextTick(() => {
+          this.renderChart();
+        });
+      },
     },
-    options: {
-      type: Object,
-      required: false
-    }
-  },
-  mounted: function() {
-    this.$nextTick(function () {
-      this.renderChart();
-    });
-  },
-  methods: {
-    renderChart: function(){
-      var self = this;
-      new sChart(self.canvasId, self.type, self.data, self.options);
-    }
-  },
-  watch: {
-    'data': function () {
-      this.renderChart();
-    },
-    'options': function () {
-      this.renderChart();
-    },
-    'type': function () {
-      this.renderChart();
-    },
-    'width': function () {
-      var self = this;
-      self.$nextTick(function(){
-        self.renderChart();
-      })
-    },
-    'height': function () {
-      var self = this;
-      self.$nextTick(function(){
-        self.renderChart();
-      })
-    }
-  }
-}
+  };
 </script>

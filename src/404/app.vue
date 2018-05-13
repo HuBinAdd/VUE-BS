@@ -14,10 +14,10 @@
 <script>
   export default {
     methods: {
-      goBack(){
+      goBack() {
         bus.$emit('closeWindow');
       },
-      goIndex(){
+      goIndex() {
         bus.$emit('pushWindow', {
           icon: 'el-icon-setting',
           index: 'dashboard',
@@ -25,14 +25,14 @@
           disabled: true,
           src: './dashboard.html',
         });
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 
 <style scoped>
-  .error-page{
+  .error-page {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,24 +42,29 @@
     background: #f3f3f3;
     box-sizing: border-box;
   }
-  .error-code{
+
+  .error-code {
     line-height: 1;
     font-size: 250px;
     font-weight: bolder;
     color: #2d8cf0;
   }
-  .error-code span{
+
+  .error-code span {
     color: #00a854;
   }
-  .error-desc{
+
+  .error-desc {
     font-size: 30px;
     color: #777;
   }
-  .error-handle{
+
+  .error-handle {
     margin-top: 30px;
     padding-bottom: 200px;
   }
-  .error-btn{
+
+  .error-btn {
     margin-left: 100px;
   }
 </style>

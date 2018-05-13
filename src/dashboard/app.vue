@@ -125,17 +125,16 @@
           {
             title: '今天要写100行代码加几个bug吧',
             status: true,
-          }
-        ]
-      }
+          },
+        ],
+      };
     },
     computed: {
       role() {
         return this.name === 'admin' ? '超级管理员' : '普通用户';
-      }
-    }
-  }
-
+      },
+    },
+  };
 </script>
 
 

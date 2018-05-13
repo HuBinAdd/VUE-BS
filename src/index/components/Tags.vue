@@ -49,7 +49,7 @@
     },
     computed: {
       showTags: {
-        get: function () {
+        get() {
           if (this.tagsList.some(item => item.index === this.activeTag)) {
             return this.activeTag;
           }
@@ -58,9 +58,9 @@
           }
           return this.activeTag;
         },
-        set: function (v) {
-          this.activeTag = v
-        }
+        set(v) {
+          this.activeTag = v;
+        },
       },
     },
     beforeUpdate() {
@@ -91,7 +91,7 @@
     height: 100%;
   }
 
-  .el-tabs--border-card>.el-tabs__header{
+  .el-tabs--border-card > .el-tabs__header {
     z-index: 2;
   }
 
@@ -99,7 +99,7 @@
     border-top: 3px solid #409EFF;
   }
 
-  .el-tabs--border-card>.el-tabs__content {
+  .el-tabs--border-card > .el-tabs__content {
     position: absolute;
     top: 40px;
     left: 0;
@@ -110,9 +110,11 @@
 
   .el-tab-pane {
     height: 100%;
-    iframe{
-      width: 100%;
-      height: 100%;
-    }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+
   }
 </style>

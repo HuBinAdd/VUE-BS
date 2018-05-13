@@ -57,7 +57,7 @@
               {
                 index: 'form',
                 title: '基本表单',
-                src: './baseForm.html'
+                src: './baseForm.html',
               },
               {
                 index: 'editor',
@@ -67,7 +67,7 @@
               {
                 index: 'markdown',
                 title: 'markdown编辑器',
-                src: './markdown.html'
+                src: './markdown.html',
               },
               {
                 index: 'upload',
@@ -86,7 +86,7 @@
             icon: 'el-icon-rank',
             index: 'drag',
             title: '拖拽列表',
-            src: './dragList.html'
+            src: './dragList.html',
           },
           {
             icon: 'el-icon-warning',
@@ -98,7 +98,7 @@
             icon: 'el-icon-error',
             index: '404',
             title: '404页面',
-            src: './404.html'
+            src: './404.html',
           },
         ],
       };

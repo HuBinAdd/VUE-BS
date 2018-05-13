@@ -64,9 +64,9 @@
 
 <script>
   export default {
-    data: function(){
+    data() {
       return {
-        options:[
+        options: [
           {
             value: 'guangdong',
             label: '广东省',
@@ -77,13 +77,13 @@
                 children: [
                   {
                     value: 'tianhe',
-                    label: '天河区'
+                    label: '天河区',
                   },
                   {
                     value: 'haizhu',
-                    label: '海珠区'
-                  }
-                ]
+                    label: '海珠区',
+                  },
+                ],
               },
               {
                 value: 'dongguan',
@@ -91,15 +91,15 @@
                 children: [
                   {
                     value: 'changan',
-                    label: '长安镇'
+                    label: '长安镇',
                   },
                   {
                     value: 'humen',
-                    label: '虎门镇'
-                  }
-                ]
-              }
-            ]
+                    label: '虎门镇',
+                  },
+                ],
+              },
+            ],
           },
           {
             value: 'hunan',
@@ -111,12 +111,12 @@
                 children: [
                   {
                     value: 'yuelu',
-                    label: '岳麓区'
-                  }
-                ]
-              }
-            ]
-          }
+                    label: '岳麓区',
+                  },
+                ],
+              },
+            ],
+          },
         ],
         form: {
           name: '',
@@ -127,14 +127,14 @@
           type: ['步步高'],
           resource: '小天才',
           desc: '',
-          options: []
-        }
-      }
+          options: [],
+        },
+      };
     },
     methods: {
       onSubmit() {
         this.$message.success('提交成功！');
-      }
-    }
-  }
+      },
+    },
+  };
 </script>

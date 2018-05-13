@@ -27,16 +27,16 @@
         this.collapse = msg;
       });
       this.$axios.post('http://g.cn', {
-        page: this.cur_page
-      }).then((res) => {
-        console.log(res);
-      })
+        page: this.cur_page,
+      }).then(() => {
+        // 输出mockData
+      });
     },
   };
 </script>
 
 <style>
-  .content-box{
+  .content-box {
     overflow: hidden;
   }
 </style>

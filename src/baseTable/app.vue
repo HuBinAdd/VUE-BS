@@ -40,7 +40,8 @@
     <el-dialog title="编辑" :visible.sync="editVisible" width="30%">
       <el-form ref="form" :model="form" label-width="50px">
         <el-form-item label="日期">
-          <el-date-picker type="date" placeholder="选择日期" v-model="form.date" value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
+          <el-date-picker type="date" placeholder="选择日期" v-model="form.date" value-format="yyyy-MM-dd"
+                          style="width: 100%;"></el-date-picker>
         </el-form-item>
         <el-form-item label="姓名">
           <el-input v-model="form.name"></el-input>
@@ -84,17 +85,17 @@
         form: {
           name: '',
           date: '',
-          address: ''
+          address: '',
         },
-        idx: -1
-      }
+        idx: -1,
+      };
     },
     created() {
       this.getData();
     },
     computed: {
       data() {
-        return this.tableData.filter((d) => {
+        return this.tableData.filter(d => {
           let is_del = false;
           for (let i = 0; i < this.del_list.length; i++) {
             if (d.name === this.del_list[i].name) {
@@ -110,8 +111,9 @@
               return d;
             }
           }
-        })
-      }
+          return false;
+        });
+      },
     },
     methods: {
       // 分页导航
@@ -122,31 +124,31 @@
       // 获取 easy-mock 的模拟数据
       getData() {
         this.$axios.post(this.url, {
-          page: this.cur_page
-        }).then((res) => {
+          page: this.cur_page,
+        }).then(res => {
           this.tableData = res.data.list;
-        })
+        });
       },
       search() {
         this.is_search = true;
       },
-      formatter(row, column) {
+      formatter(row) {
         return row.address;
       },
       filterTag(value, row) {
         return row.tag === value;
       },
-      handleEdit(index, row) {
+      handleEdit(index) {
         this.idx = index;
         const item = this.tableData[index];
         this.form = {
           name: item.name,
           date: item.date,
-          address: item.address
-        }
+          address: item.address,
+        };
         this.editVisible = true;
       },
-      handleDelete(index, row) {
+      handleDelete(index) {
         this.idx = index;
         this.delVisible = true;
       },
@@ -155,9 +157,9 @@
         let str = '';
         this.del_list = this.del_list.concat(this.multipleSelection);
         for (let i = 0; i < length; i++) {
-          str += this.multipleSelection[i].name + ' ';
+          str += `${this.multipleSelection[i].name}  `;
         }
-        this.$message.error('删除了' + str);
+        this.$message.error(`删除了${str}`);
         this.multipleSelection = [];
       },
       handleSelectionChange(val) {
@@ -167,17 +169,16 @@
       saveEdit() {
         this.$set(this.tableData, this.idx, this.form);
         this.editVisible = false;
-        this.$message.success(`修改第 ${this.idx+1} 行成功`);
+        this.$message.success(`修改第 ${this.idx + 1} 行成功`);
       },
       // 确定删除
-      deleteRow(){
+      deleteRow() {
         this.tableData.splice(this.idx, 1);
         this.$message.success('删除成功');
         this.delVisible = false;
-      }
-    }
-  }
-
+      },
+    },
+  };
 </script>
 
 <style scoped>
@@ -193,7 +194,8 @@
     width: 300px;
     display: inline-block;
   }
-  .del-dialog-cnt{
+
+  .del-dialog-cnt {
     font-size: 16px;
     text-align: center
   }

@@ -22,31 +22,31 @@
   import 'quill/dist/quill.snow.css';
   import 'quill/dist/quill.bubble.css';
   import { quillEditor } from 'vue-quill-editor';
+
   export default {
-    data: function(){
+    data() {
       return {
         content: '',
         editorOption: {
-          placeholder: 'Hello World'
-        }
-      }
+          placeholder: 'Hello World',
+        },
+      };
     },
     components: {
-      quillEditor
+      quillEditor,
     },
     methods: {
-      onEditorChange({ editor, html, text }) {
+      onEditorChange({ html }) {
         this.content = html;
       },
-      submit(){
-        console.log(this.content);
+      submit() {
         this.$message.success('提交成功！');
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 <style scoped>
-  .editor-btn{
+  .editor-btn {
     margin-top: 20px;
   }
 </style>
