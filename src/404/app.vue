@@ -3,9 +3,7 @@
     <div class="error-code">4<span>0</span>4</div>
     <div class="error-desc">啊哦~ 你所访问的页面不存在</div>
     <div class="error-handle">
-      <router-link to="/">
-        <el-button type="primary" size="large" @click="goBack">关闭页面</el-button>
-      </router-link>
+      <el-button type="primary" size="large" @click="goBack">关闭页面</el-button>
       <el-button class="error-btn" type="primary" size="large" @click="goIndex">打开首页</el-button>
     </div>
   </div>

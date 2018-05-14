@@ -10,7 +10,7 @@
     [
       "@babel/preset-stage-2",
       {
-        "decoratorsLegacy": true,
+        "decoratorsLegacy": true
       }
     ]
   ],
@@ -19,6 +19,13 @@
       "@babel/plugin-transform-runtime",
       {
         "polyfill": false
+      }
+    ],
+    [
+      "component",
+      {
+        "libraryName": "element-ui",
+        "styleLibraryName": "theme-chalk"
       }
     ]
   ]
