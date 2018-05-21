@@ -1,120 +1,38 @@
-/**
- * For each entry, `key` is the chunk name,
- * `value.entry` is the webpack entry,
- * `value.html` is the options object passed to HtmlWebpackPlugin.
- */
+const fs = require('fs');
+const path = require('path');
+const page = [ 'images',
+  'js',
+  'css',
+  'comments' ];
+const getHumpName = component => component.replace(/(?!^)([A-Z])/g, '-$1').toLowerCase();
 
-module.exports = {
-  'index': {
-    entry: './src/index',
-    html: {
-      class: 'index',
-      title: 'Vue demo',
-      desc: '',
-    },
-  },
-  'login': {
-    entry: './src/login',
-    html: {
-      class: 'index',
-      title: 'Vue demo',
-      desc: '',
-    },
-  },
-  'dashboard': {
-    entry: './src/dashboard',
-    html: {
-      class: '',
-      title: '',
-      desc: '',
-    },
-  },
-  '403': {
-    entry: './src/403',
-    html: {
-      class: '',
-      title: '',
-      desc: '',
-    },
-  },
-  '404': {
-    entry: './src/404',
-    html: {
-      class: '',
-      title: '',
-      desc: '',
-    },
-  },
-  'baseCharts': {
-    entry: './src/baseCharts',
-    html: {
-      class: '',
-      title: '',
-      desc: '',
-    },
-  },
-  'baseForm': {
-    entry: './src/baseForm',
-    html: {
-      class: '',
-      title: '',
-      desc: '',
-    },
-  },
-  'baseTable': {
-    entry: './src/baseTable',
-    html: {
-      class: '',
-      title: '',
-      desc: '',
-    },
-  },
-  'dragList': {
-    entry: './src/dragList',
-    html: {
-      class: '',
-      title: '',
-      desc: '',
-    },
-  },
-  'markdown': {
-    entry: './src/markdown',
-    html: {
-      class: '',
-      title: '',
-      desc: '',
-    },
-  },
-  'permission': {
-    entry: './src/permission',
-    html: {
-      class: '',
-      title: '',
-      desc: '',
-    },
-  },
-  'tabs': {
-    entry: './src/tabs',
-    html: {
-      class: '',
-      title: '',
-      desc: '',
-    },
-  },
-  'upload': {
-    entry: './src/upload',
-    html: {
-      class: '',
-      title: '',
-      desc: '',
-    },
-  },
-  'vueEditor': {
-    entry: './src/vueEditor',
-    html: {
-      class: '',
-      title: '',
-      desc: '',
-    },
-  },
-};
+const obj = {};
+
+function fileDisplay(fileName) {
+  const file = path.resolve(__dirname, '../src/' + fileName);
+  const routers = fs.readdirSync(file);
+  routers.map((value, index) => {
+    const filedir = path.join(file, value);
+    const stats = fs.statSync(filedir);
+    const isFile = stats.isFile(); // 是文件
+    const isDir = stats.isDirectory(); // 是文件夹
+    const name = getHumpName(value)
+    if (isFile && name === 'index.js') {
+      obj[ fileName.substr(1) ] = {
+        entry: './src' + fileName,
+        html: {
+          class: fileName.substr(1) === 'index' ? 'index' : '',
+          title: '',
+          desc: '',
+        },
+      };
+    }
+    if (isDir && page.every(v => v != name)) {
+      fileDisplay(fileName + '/' + value);
+    }
+  });
+}
+
+fileDisplay('');
+
+module.exports = obj;
