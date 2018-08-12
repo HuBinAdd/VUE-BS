@@ -10,6 +10,7 @@
     "mock": "cross-env IS_MOCK=true npm run dev",
     "prebuild": "yarn lint && gulp clean",
     "build": "cross-env NODE_ENV=production gulp build",
+    "ghPages": "cross-env IS_MOCK=true && npm run build && git subtree push --prefix dist origin gh-pages",
     "lint": "eslint --ext .js,.vue .",
     "svgo": "svgo --config .svgo.yml src/resources/icons",
     "prepush": "yarn lint"
