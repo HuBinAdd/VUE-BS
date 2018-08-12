@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import App from './app';
+import 'util';
 import { Tooltip, Dropdown, DropdownItem, DropdownMenu, Menu, MenuItem, Submenu, Tabs, TabPane } from 'element-ui';
 import axios from 'axios';
 import 'babel-polyfill';
