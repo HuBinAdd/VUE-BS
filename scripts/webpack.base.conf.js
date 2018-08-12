@@ -20,7 +20,7 @@ module.exports = {
   mode: process.env.NODE_ENV,
   output: {
     path: resolve(DIST),
-    publicPath: '/',
+    publicPath: './',
     filename: '[name].js',
   },
   resolve: {
